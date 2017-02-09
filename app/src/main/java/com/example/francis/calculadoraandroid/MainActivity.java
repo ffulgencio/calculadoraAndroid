@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public TextView txtResultado;
     Button btn1,btn2,btn3,btn4,btn5,btn6, btn7, btn8, btn9, btn0, btnLimpiar;
-    Button btnSumar, btnRestar, btnMultiplicar, btnDividir, btnIgual;
+    Button btnSumar, btnRestar, btnMultiplicar, btnDividir, btnIgual, btnPunto;
     public boolean punto=false;
     public String Texto ="";
     public double n1,n2;
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnMultiplicar = (Button) findViewById(R.id.btnMultiplicar);
         btnDividir = (Button) findViewById(R.id.btnDividir);
         btnIgual =(Button) findViewById(R.id.btnIgual);
+        btnPunto =(Button) findViewById(R.id.btnPunto);
 
 
         btn1.setOnClickListener(this);
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnMultiplicar.setOnClickListener(this);
         btnDividir.setOnClickListener(this);
         btnIgual.setOnClickListener(this);
+        btnPunto.setOnClickListener(this);
         //btn1.setOnClickListener(this);
 
 
@@ -126,22 +128,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btnLimpiar :
                 Texto = "";
                 txtResultado.setText("0");
+                punto =false;
+                break;
+            case R.id.btnPunto :
+                //String s = ;
+               // Toast.makeText(getApplicationContext(), operacion, Toast.LENGTH_SHORT).show();
+                if (punto == false){
+                    if (txtResultado.getText().equals("0")) {
+                        Texto += txtResultado.getText() + (String) b.getText();
+                    }else
+                        Texto += (String) b.getText();
+                    txtResultado.setText(Texto);
+                    punto = true;
+                }
                 break;
 
             case R.id.btnIgual :
-                n2 = Double.valueOf(Texto);
-                Texto="";
-                if (operacion.equals("+")) {
 
+                n2 = Double.valueOf(Texto);
+
+                Texto="";
+
+                if (operacion.equals("+")) {
                     txtResultado.setText(String.valueOf(n1 + n2));
-                    Toast.makeText(getApplicationContext(), "funciona", Toast.LENGTH_SHORT).show();
                 }
                 if (operacion.equals("-")) {
                     txtResultado.setText(String.valueOf(n1 - n2));
                 }
-
-
-
+                if (operacion.equals("*")) {
+                    txtResultado.setText(String.valueOf(n1 * n2));
+                }
+                if (operacion.equals("/")) {
+                    txtResultado.setText(String.valueOf(n1 / n2));
+                }
+                punto = false;
                 break;
 
             default:
@@ -150,7 +170,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Texto="";
                 txtResultado.setText("0");
                 operacion =(String) b.getText();
-                Toast.makeText(getApplicationContext(), operacion, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), operacion, Toast.LENGTH_SHORT).show();
+                punto = false;
                 break;
         }
 
