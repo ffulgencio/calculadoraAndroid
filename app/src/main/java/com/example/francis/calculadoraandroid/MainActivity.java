@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn0 = (Button) findViewById(R.id.button0);
         btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
         btnSumar = (Button) findViewById(R.id.btnSumar);
+        btnRestar = (Button) findViewById(R.id.btnRestar);
+        btnMultiplicar = (Button) findViewById(R.id.btnMultiplicar);
+        btnDividir = (Button) findViewById(R.id.btnDividir);
         btnIgual =(Button) findViewById(R.id.btnIgual);
 
 
@@ -52,6 +58,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btn0.setOnClickListener(this);
         btnLimpiar.setOnClickListener(this);
         btnSumar.setOnClickListener(this);
+        btnRestar.setOnClickListener(this);
+        btnMultiplicar.setOnClickListener(this);
+        btnDividir.setOnClickListener(this);
         btnIgual.setOnClickListener(this);
         //btn1.setOnClickListener(this);
 
@@ -70,7 +79,80 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        
+        Button b = (Button) v;
+
+        switch (v.getId()){
+
+            case R.id.button :
+                Texto = (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button2 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button3 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button4 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button5 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button6 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button7 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button8 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button9 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.button0 :
+                Texto += (String) b.getText();
+                txtResultado.setText(Texto);
+                break;
+            case R.id.btnLimpiar :
+                Texto = "";
+                txtResultado.setText("0");
+                break;
+
+            case R.id.btnIgual :
+                n2 = Double.valueOf(Texto);
+                Texto="";
+                if (operacion.equals("+")) {
+
+                    txtResultado.setText(String.valueOf(n1 + n2));
+                    Toast.makeText(getApplicationContext(), "funciona", Toast.LENGTH_SHORT).show();
+                }
+                if (operacion.equals("-")) {
+                    txtResultado.setText(String.valueOf(n1 - n2));
+                }
+
+
+
+                break;
+
+            default:
+
+                n1 = Double.valueOf(Texto);
+                Texto="";
+                txtResultado.setText("0");
+                operacion =(String) b.getText();
+                Toast.makeText(getApplicationContext(), operacion, Toast.LENGTH_SHORT).show();
+                break;
+        }
 
 
 
