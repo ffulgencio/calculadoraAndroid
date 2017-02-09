@@ -70,65 +70,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        Button b = (Button) v;
-
-        if (txtResultado.getText().equals("0")) {
-            txtResultado.setText(b.getText());
-            //Texto += (String) txtResultado.getText();
-
-        }else {
-            if (v.getId() != R.id.btnDividir && v.getId() != R.id.btnSumar){
-                Texto += (String) b.getText();
-                txtResultado.setText(Texto);
-                if (b.getId() == R.id.btnLimpiar) {
-                    txtResultado.setText("0");
-
-                }else
-                    Texto += (String) txtResultado.getText();
-            }
-        }
+        
 
 
-
-        if (b.getId() == R.id.btnSumar){
-            if (operacionElegida ==false) {
-                this.Operar("suma");
-            }
-
-        }else if (b.getId() == R.id.btnRestar){
-            if (operacionElegida ==false) {
-
-                this.Operar("resta");
-
-            }
-
-        }if (b.getId() == R.id.btnMultiplicar){
-            if (operacionElegida ==false) {
-
-                this.Operar("multiplicar");
-
-            }
-
-        }else if (b.getId() == R.id.btnDividir) {
-                if (operacionElegida == false) {
-
-                    this.Operar("dividir");
-
-                }
-        }else{
-            if (operacionElegida == true) {
-                if (b.getId() == R.id.btnIgual) {
-                        n2 = Double.valueOf(Texto);
-                        txtResultado.setText(String.valueOf(n1+n2));
-                        Texto="";
-                        operacionElegida = false;
-
-
-                }
-
-            }
-
-        }
 
     }
 }
